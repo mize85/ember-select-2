@@ -4,22 +4,43 @@ import Router from '../../router';
 import config from '../../config/environment';
 
 export default function startApp(attrs) {
-  var App;
+    var App;
 
-  var attributes = Ember.merge({}, config.APP);
-  attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
+    var attributes = Ember.merge({}, config.APP);
+    attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
 
-  Router.reopen({
-    location: 'none'
-  });
+    Router.reopen({
+        location: 'none'
+    });
 
-  Ember.run(function() {
-    App = Application.create(attributes);
-    App.setupForTesting();
-    App.injectTestHelpers();
-  });
+    Ember.run(function() {
+        App = Application.create(attributes);
+        App.setupForTesting();
+        App.injectTestHelpers();
+    });
 
-  App.reset(); // this shouldn't be needed, i want to be able to "start an app at a specific URL"
+    App.reset(); // this shouldn't be needed, i want to be able to "start an app at a specific URL"
 
-  return App;
+    return App;
 }
+
+
+//import Ember from 'ember';
+//import Application from '../../app';
+//import Router from '../../router';
+//import config from '../../config/environment';
+//
+//export default function startApp(attrs) {
+//  var application;
+//
+//  var attributes = Ember.merge({}, config.APP);
+//  attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
+//
+//  Ember.run(function() {
+//    application = Application.create(attributes);
+//    application.setupForTesting();
+//    application.injectTestHelpers();
+//  });
+//
+//  return application;
+//}
